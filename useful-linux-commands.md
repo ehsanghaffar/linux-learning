@@ -40,3 +40,12 @@
   ```
 
 Script for get lists both system and users accounts, [here](https://github.com/ehsanghaffar/learning-bash-scripting/blob/main/part01/users_list.sh)
+
+- SSL Cert for domain
+
+apt install socat -y
+wget -O - <https://get.acme.sh> | sh
+source ~/.bashrc
+acme.sh --upgrade --auto-upgrade
+acme.sh --register-account -m arspand@gmail.com
+acme.sh --issue -d serve1.eindev.tk --standalone
