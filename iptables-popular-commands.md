@@ -4,6 +4,18 @@ In this article I will take you through most popular iptables commands in Linux.
 
 ## Commands
 
+- To check the current status of Firewall
+
+  ```bash
+    sudo  iptables -L -n -v
+  ```
+
+- To block incoming ICMP requests
+
+  ```bash
+    iptables -A INPUT -p icmp -i eth0 -j DROP
+  ```
+  
 - Open specific port:
 
   ```bash
