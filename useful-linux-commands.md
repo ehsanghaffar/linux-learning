@@ -49,3 +49,23 @@ source ~/.bashrc
 acme.sh --upgrade --auto-upgrade
 acme.sh --register-account -m arspand@gmail.com
 acme.sh --issue -d serve1.eindev.tk --standalone
+
+- Change tcp connections limit
+  ```bash
+  nano /etc/sysctl.conf
+  #add for c10k
+  net.core.somaxconn = 65536
+  net.ipv4.tcp_max_tw_buckets = 1440000
+  fs.file-max = 2097152
+
+  nano /etc/security/limits.conf
+  #add for c10k
+  * hard nofile 65535
+  * soft nofile 65535
+  * hard nproc 65535
+  * soft nproc 65535
+
+  nano /etc/pam.d/common-session
+  #c10k (optional)
+  session required pam_limits.so
+  ```
